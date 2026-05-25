@@ -1,8 +1,17 @@
+# Node modules
+node_modules/
 
 # Playwright
-node_modules/
 /test-results/
 /reports/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/playwright-report/
+
+
+# Storage state (IMPORTANT)
+storageState.json
+
+# Environment files
+.env

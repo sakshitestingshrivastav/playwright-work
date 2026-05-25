@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 export default defineConfig({
   testDir: './tests',
@@ -19,9 +22,10 @@ export default defineConfig({
   ],
 
   use: {
-    baseURL: 'https://www.saucedemo.com/',
+    baseURL: process.env.SWAG_BASE_URL,
+    storageState: 'storageState.json',
 
-    headless: false,
+    headless: true,
 
     actionTimeout: 5000,
 
