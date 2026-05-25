@@ -1,0 +1,35 @@
+{
+  "cookies": [
+    {
+      "name": "_cfuvid",
+      "value": "8QKeENVh9U6CfWCRv407ka8BZoqsTMSYYZZr4fkOPzk-1775756206.0901728-1.0.1.1-Elp2rBqXaARcsKOVT1bUnFZTzeALyEsFGxCHvoxfdhw",
+      "domain": ".www.wellsitenavigator.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__Host-authjs.csrf-token",
+      "value": "73bfbbc43228b6ded67622af2f4ba3f1c4e0fdc81fa1adcb9c4d495815136233%7C0d950d88bae1d339de8163cbb6f89aeeeab6803c8445173571f7f37effde50a1",
+      "domain": "portal.wellsitenavigator.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-authjs.callback-url",
+      "value": "https%3A%2F%2Fportal.wellsitenavigator.com",
+      "domain": "portal.wellsitenavigator.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
