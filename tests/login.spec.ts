@@ -6,28 +6,27 @@ import { validUsername} from '../test-data/validCredentials'
 let username : string | undefined
 let password : string | undefined
 
-test('Verify login page URL', async ({ page }) => {
-  const loginPage = new Login(page);
+let loginPage : Login
+
+test.beforeEach(async ({ page }) => {
+  loginPage = new Login(page);
   await loginPage.open();
+})
+
+test('Verify login page URL', async ({ page }) => {
   await expect(page).toHaveURL(/saucedemo/);
 });
 
 test('Verify login page text', async ({ page }) => {
-  const loginPage = new Login(page);
-  await loginPage.open();
   await loginPage.verifySwagLabsVisible();
 });
 
 test('Verify login with valid test data credentials', async ({ page }) => {
-  const loginPage = new Login(page);
-  await loginPage.open();
   await loginPage.verifySwagLabsVisible();
   await loginPage.login(validUsername[0], process.env.SWAG_PASSWORD!);
 });
 
 test('Extract username and password from login page and enter the same credentials and do login', async ({ page }) => {
-  const loginPage = new Login(page);
-  await page.goto('/');
   const usernameBlock = await page.locator('#login_credentials').innerText();
   const passwordBlock = await page.locator('.login_password').innerText();
   const usernameLines = usernameBlock.split('\n');
@@ -41,24 +40,18 @@ if (!username || !password) {
 });
 
 test('Should be able to see error message if invalid crendentials are entered for login', async ({ page }) => {
-  const loginPage = new Login(page);
-  await loginPage.open();
   await loginPage.verifySwagLabsVisible();
   await loginPage.login(generateRandomString(10), generateRandomString(10));
   await expect(page.getByText("Username and password do not match any user in this service")).toBeVisible()
 })
 
 test('Should be able to see error message if crendentials are not entered for login', async ({ page }) => {
-  const loginPage = new Login(page);
-  await loginPage.open();
   await loginPage.verifySwagLabsVisible();
   await loginPage.login("", "");
   await expect(page.getByText("Username is required")).toBeVisible()
 })
 
 test('Should be able to see error message if password is not entered for login', async ({ page }) => {
-  const loginPage = new Login(page);
-  await loginPage.open();
   await loginPage.verifySwagLabsVisible();
   await loginPage.login(generateRandomString(10), "");
   await expect(page.getByText("Password is required")).toBeVisible()

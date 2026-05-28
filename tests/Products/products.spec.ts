@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+
 test('Product page URL validation', async ({ page }) => {
   await page.goto('/inventory.html');
   await expect(page).toHaveURL(/inventory.html/);
