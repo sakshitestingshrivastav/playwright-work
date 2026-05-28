@@ -16,6 +16,7 @@ jobs:
       SWAG_USERNAME: ${{ secrets.SWAG_USERNAME }}
       SWAG_PASSWORD: ${{ secrets.SWAG_PASSWORD }}
       SWAG_BASE_URL: ${{ secrets.SWAG_BASE_URL }}
+      SWAG_PRODUCT_PAGE_URL: ${{ secrets.SWAG_PRODUCT_PAGE_URL }}
 
     steps:
       - name: Checkout code
