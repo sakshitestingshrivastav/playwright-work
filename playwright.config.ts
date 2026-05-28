@@ -21,6 +21,8 @@ export default defineConfig({
     ['list']
   ],
 
+  globalSetup: require.resolve('./global-setup'),
+
   use: {
     baseURL: process.env.SWAG_BASE_URL,
     storageState: 'storageState.json',
