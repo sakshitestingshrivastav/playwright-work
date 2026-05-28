@@ -12,6 +12,11 @@ jobs:
   playwright-tests:
     runs-on: ubuntu-latest
 
+    env:
+      SWAG_USERNAME: ${{ secrets.SWAG_USERNAME }}
+      SWAG_PASSWORD: ${{ secrets.SWAG_PASSWORD }}
+      SWAG_BASE_URL: ${{ secrets.SWAG_BASE_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
