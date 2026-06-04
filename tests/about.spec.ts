@@ -17,7 +17,7 @@ test('Product page title check', async ({ page }) => {
   await expect(page.locator('[data-test="title"]')).toHaveText('Products');
 });
 
-test("Verify that user is able to see About link in side bar link",async({page})=>{
+test("Verify that user is able to see About link in side bar link..",async({page})=>{
 await about.clickOnBurger()
 await expect(page.locator(".bm-item-list"))
   .toContainText("About");
