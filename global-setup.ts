@@ -1,23 +1,15 @@
 import { chromium, FullConfig } from '@playwright/test';
+import { ENV } from './config/env';
 
 async function globalSetup(config: FullConfig) {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
 
-  const username = process.env.SWAG_USERNAME;
-  const password = process.env.SWAG_PASSWORD;
+  const username = ENV.USERNAME;
+  const password = ENV.PASSWORD;
 
-    if (!process.env.SWAG_BASE_URL) {
-      throw new Error('Missing SWAG_USERNAME or SWAG_PASSWORD');
-    }
-  await page.goto(process.env.SWAG_BASE_URL);
-
-  
-    if (!username || !password) {
-      throw new Error('Missing SWAG_USERNAME or SWAG_PASSWORD');
-    }
-
+  await page.goto(ENV.BASE_URL);
   await page.locator('[data-test="username"]').fill(username);
   await page.locator('[data-test="password"]').fill(password);
   await page.locator('#login-button').click();

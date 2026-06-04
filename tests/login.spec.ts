@@ -2,6 +2,7 @@ import { test , expect } from '@playwright/test';
 import { Login } from '../pages/Login';
 import { generateRandomString } from '../utils/helper';
 import { validUsername} from '../test-data/validCredentials'
+import { ENV } from '../config/env';
 
 let username : string | undefined
 let password : string | undefined
@@ -23,7 +24,7 @@ test('Verify login page text', async ({ page }) => {
 
 test('Verify login with valid test data credentials', async ({ page }) => {
   await loginPage.verifySwagLabsVisible();
-  await loginPage.login(validUsername[0], process.env.SWAG_PASSWORD!);
+  await loginPage.login(validUsername[0], ENV.PASSWORD);
 });
 
 test('Extract username and password from login page and enter the same credentials and do login', async ({ page }) => {

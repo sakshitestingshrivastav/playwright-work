@@ -1,5 +1,5 @@
 import { test,expect } from '@playwright/test'
-import { Cart , AddToCart } from '../../pages/Cart';
+import { AddToCart } from '../../pages/Cart';
 
 
 let cart : AddToCart
