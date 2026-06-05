@@ -22,3 +22,9 @@ await logout.logout();
 expect(page).toHaveURL(process.env.SWAG_BASE_URL!);
 await expect(page).not.toHaveURL(process.env.SWAG_PRODUCT_PAGE_URL!);
 })
+
+test('@smoke logout works', async ({page}) => {
+await logout.logout();
+expect(page).toHaveURL(process.env.SWAG_BASE_URL!);
+await expect(page).not.toHaveURL(process.env.SWAG_PRODUCT_PAGE_URL!);
+})

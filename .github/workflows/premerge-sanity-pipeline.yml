@@ -1,0 +1,44 @@
+name: Pre-Merge Sanity Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  sanity-check:
+    runs-on: ubuntu-latest
+
+    env:
+      SWAG_USERNAME: ${{ secrets.SWAG_USERNAME }}
+      SWAG_PASSWORD: ${{ secrets.SWAG_PASSWORD }}
+      SWAG_BASE_URL: ${{ secrets.SWAG_BASE_URL }}
+      SWAG_PRODUCT_PAGE_URL: ${{ secrets.SWAG_PRODUCT_PAGE_URL }}
+      SWAG_SAUCE_LABS_URL: ${{ secrets.SWAG_SAUCE_LABS_URL }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Sanity Tests
+        run: npx playwright test --grep @smoke
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanity-report
+          path: playwright-report

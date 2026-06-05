@@ -57,3 +57,18 @@ test('Should be able to see error message if password is not entered for login',
   await loginPage.login(generateRandomString(10), "");
   await expect(page.getByText("Password is required")).toBeVisible()
 })
+
+test('@smoke login works', async ({page}) => {
+  await expect(page).toHaveURL(/saucedemo/);
+  await loginPage.verifySwagLabsVisible();
+  const usernameBlock = await page.locator('#login_credentials').innerText();
+  const passwordBlock = await page.locator('.login_password').innerText();
+  const usernameLines = usernameBlock.split('\n');
+  const passwordLines = passwordBlock.split('\n');
+  username = usernameLines.find(line => line.includes('standard_user'))?.trim();
+  password = passwordLines.find(line => line.includes('secret_sauce'))?.trim();
+if (!username || !password) {
+    throw new Error('Username or password not found on login page');
+  }
+  await loginPage.login(username, password);
+})
