@@ -10,6 +10,13 @@ jobs:
   nightly-regression:
     runs-on: ubuntu-latest
 
+    env:
+      SWAG_USERNAME: ${{ secrets.SWAG_USERNAME }}
+      SWAG_PASSWORD: ${{ secrets.SWAG_PASSWORD }}
+      SWAG_BASE_URL: ${{ secrets.SWAG_BASE_URL }}
+      SWAG_PRODUCT_PAGE_URL: ${{ secrets.SWAG_PRODUCT_PAGE_URL }}
+      SWAG_SAUCE_LABS_URL: ${{ secrets.SWAG_SAUCE_LABS_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
