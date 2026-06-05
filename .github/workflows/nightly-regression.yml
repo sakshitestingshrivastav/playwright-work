@@ -34,7 +34,3 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report
-
-      - name: Send Email Report
-        if: always()
-        run: node utils/emailReporter.js
